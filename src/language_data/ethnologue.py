@@ -1,4 +1,3 @@
-from __future__ import with_statement
 import csv
 import urllib
 import os
@@ -16,7 +15,7 @@ class Ethnologue(object):
     self.data_path = 'data' if data_path is None else data_path
     assert(os.path.exists(self.data_path))
     lang_codes_path = os.path.join(self.data_path,'LanguageCodes.tab')
-    self.macrolangs = macrolanguages()
+    self.macrolangs = macrolanguages
 
   def scrape_ethonologue_for_tree_data(self):
     LanguageCodes = [    row['LangID']
@@ -99,7 +98,7 @@ def load_ethnologue_tree(path):
 
 import os
 if __name__ == "__main__":
-  path = 'etn_tree.pickle'
+  path = os.path.join(os.path.dirname(__file__), 'data', 'etn_tree.pickle')
   if not os.path.exists(path):
     store_ethnologue_tree(path)
   tree = load_ethnologue_tree(path)
