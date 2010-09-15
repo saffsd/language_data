@@ -3,10 +3,9 @@ from __future__ import with_statement
 import csv
 import re
 import os
-from hydrat import configuration
 
-langP = configuration.getpath('ethnologue')
-datafile = os.path.join(langP, 'iso-639-3_Latin1_20090210.tab')
+dataP = os.path.join(os.path.dirname(__file__), 'data')
+datafile = os.path.join(dataP, 'iso-639-3_Latin1_20090210.tab')
 
 with open(datafile) as data:
   reader = csv.DictReader(data, delimiter='\t')
@@ -26,7 +25,7 @@ def __macrolanguages():
   Returns a dict mapping from a macrolanguage code in iso639-3
   to the list of macrolanguages it covers
   """
-  macrolanguages_data_path = os.path.join(langP,'macrolanguages.asp')
+  macrolanguages_data_path = os.path.join(dataP,'macrolanguages.asp')
   macrolanguage_map = {}
   code_re = re.compile(r"""<a HREF="documentation.asp\?id=(?P<code>\w\w\w)">""")
   with open(macrolanguages_data_path) as data:
