@@ -1,3 +1,4 @@
 Clean up for release.
 Tidy up the ethnologue data parser. 
 Add in the ethnologue page scrape (in compressed format, look into reading it without unpacking, I think python does this natively)
+Add package data to setup.py. See http://docs.python.org/distutils/setupscript.html#installing-package-data
